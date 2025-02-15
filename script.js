@@ -1,3 +1,13 @@
+document.getElementById('search-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const query = document.getElementById('search-input').value.trim();
+    if (query) {
+        const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+        window.location.href = searchUrl;
+    }
+});
+
 function updateClock() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
