@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,75 +14,111 @@ body {
     background-image: url('https://images.unsplash.com/photo-1739477021967-e14dc3938e56?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-image 0.3s ease;
 }
 
 .container {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 30px 40px;
+    border-radius: 32px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
 }
 
 header h1 {
     font-size: 3rem;
     color: #0078d7;
     margin-bottom: 20px;
+    letter-spacing: -0.5px;
 }
 
 #search-form {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 
 #search-input {
-    width: 500px;
-    padding: 10px;
+    width: 70%;
+    max-width: 500px;
+    padding: 14px 18px;
     border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
+    border-radius: 60px 0 0 60px;
     font-size: 1rem;
     outline: none;
+    background: white;
+}
+
+#search-input:focus {
+    border-color: #0078d7;
+    box-shadow: 0 0 0 2px rgba(0,120,215,0.2);
 }
 
 #search-form button {
-    padding: 10px 20px;
+    padding: 14px 28px;
     background-color: #0078d7;
     color: white;
     border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 60px 60px 0;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.2s;
 }
 
 #search-form button:hover {
     background-color: #005bb5;
 }
 
-.gear-icon {
+.toolbar {
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toolbar-item {
+    font-size: 28px;
     cursor: pointer;
     color: #0078d7;
-    transition: transform 0.3s ease;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(4px);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
 }
 
-.gear-icon:hover {
-    transform: rotate(90deg);
+.toolbar-item:hover {
+    transform: scale(1.08);
+    background: rgba(255,255,255,0.95);
+    color: #005bb5;
 }
 
+/* Theme Panel (Settings) */
 .theme-panel {
     position: fixed;
     top: 0;
-    right: -300px;
-    width: 300px;
+    right: -320px;
+    width: 320px;
     height: 100%;
     background-color: #fff;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
 .theme-panel.open {
@@ -93,44 +129,105 @@ header h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #ccc;
+    padding: 18px 20px;
+    border-bottom: 1px solid #eaeaea;
+    background: #f9f9fc;
 }
 
 .theme-header h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1e2a3e;
 }
 
 .close-btn {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
+    color: #6c757d;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: #dc3545;
+}
+
+.settings-section {
+    padding: 16px 20px;
+    background: #f0f4f8;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.browser-settings-btn {
+    background: linear-gradient(135deg, #0078d7, #005fa3);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 18px;
+    width: 100%;
+    border-radius: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.browser-settings-btn i {
+    font-size: 1.2rem;
+}
+
+.browser-settings-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #005fa3, #004b82);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.settings-note {
+    font-size: 0.7rem;
+    color: #5a6874;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
 }
 
 .theme-options {
-    padding: 15px;
-    overflow-y: auto;
-    height: calc(100% - 60px);
+    padding: 20px;
+    flex: 1;
 }
 
 .theme-card {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     cursor: pointer;
     text-align: center;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.theme-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
 .theme-card img {
     width: 100%;
-    height: 150px;
+    height: 130px;
     object-fit: cover;
-    border-radius: 5px;
 }
 
 .theme-card p {
-    margin: 10px 0 0;
-    font-size: 1rem;
+    margin: 10px 0;
+    font-weight: 500;
+    color: #2c3e50;
 }
 
+/* Widgets styling */
 #widgets-container {
     position: fixed;
     top: 0;
@@ -138,78 +235,50 @@ header h1 {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: 10;
 }
 
 .widget {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 220px;
     pointer-events: auto;
+    transition: box-shadow 0.2s;
+    border: 1px solid rgba(255,255,255,0.5);
 }
 
 .widget-header {
-    padding: 10px;
+    padding: 12px;
     background-color: #0078d7;
     color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     font-weight: bold;
-    cursor: move;
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
 }
 
 .widget-content {
-    padding: 10px;
-}
-
-.clock-widget #clock {
-    font-size: 1.5rem;
-    font-weight: bold;
+    padding: 14px;
     text-align: center;
 }
 
-.toolbar {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.clock-widget #clock {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: monospace;
 }
 
-.toolbar-item {
-    font-size: 24px;
-    cursor: pointer;
-    color: #0078d7;
-    transition: transform 0.3s ease;
-}
-
-.toolbar-item:hover {
-    transform: scale(1.1);
-}
-
-.toolbar .edit-widgets-btn,
-.toolbar .gear-icon {
-    font-size: 24px;
-    cursor: pointer;
-    color: #0078d7;
-    transition: transform 0.3s ease;
-}
-
-.toolbar .edit-widgets-btn:hover,
-.toolbar .gear-icon:hover {
-    transform: scale(1.1);
-}
-
-.widget-header {
-    padding: 10px;
-    background-color: #0078d7;
-    color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    font-weight: bold;
-    cursor: default;
+.weather-widget #temperature {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1e2f3f;
 }
 
 .editing .widget-header {
@@ -218,6 +287,7 @@ header h1 {
 
 .editing .widget {
     border: 2px dashed #0078d7;
+    box-shadow: 0 0 0 3px rgba(0,120,215,0.3);
 }
 
 .toggle-widget-btn {
@@ -226,50 +296,50 @@ header h1 {
     color: white;
     cursor: pointer;
     font-size: 1rem;
-    margin-left: auto;
+    padding: 0 6px;
+    border-radius: 30px;
+    transition: 0.2s;
 }
 
 .toggle-widget-btn:hover {
-    color: #ffcc00;
+    background: rgba(255,255,255,0.2);
+    color: #ffdd99;
 }
 
 #hidden-widgets-container {
     position: fixed;
-    top: 20px;
+    bottom: 20px;
     left: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    background: rgba(30,30,40,0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 12px 16px;
+    min-width: 180px;
+    z-index: 200;
     display: none;
+    gap: 10px;
+    flex-direction: column;
+    color: white;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 #hidden-widgets-container.visible {
-    display: block;
+    display: flex;
 }
 
-.editing #widgets-container .widget {
-    border: 2px dashed #0078d7;
+#hidden-widgets-container .widget {
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid #fff3;
 }
 
-.editing .toggle-widget-btn {
-    pointer-events: auto;
+#hidden-widgets-container .widget-header {
+    background-color: #2c3e66;
 }
 
-.toggle-widget-btn {
-    pointer-events: none;
-}
-
-.weather-widget #temperature {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-.weather-widget #weather-info {
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
+.editing #hidden-widgets-container.visible {
+    display: flex;
 }
